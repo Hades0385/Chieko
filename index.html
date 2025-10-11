@@ -19,6 +19,13 @@
     <script src="./js/script.js" defer></script>
     <link href="./css/style.css" rel="stylesheet" />
     <link href="./css/home.css" rel="stylesheet" />
+    <meta name="theme-color" content="#0d9488">
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/pwa-192.png" />
+    <link rel="apple-touch-icon" href="icons/pwa-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
   </head>
   <body>
     <nav class="bottom">
@@ -109,7 +116,7 @@
     // 註冊 Service Worker
     if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js');
+    navigator.serviceWorker.register('/sw.js');
     });
     }
   </script>

@@ -159,6 +159,7 @@ function setWeatherImage(type) {
   "風雪": "https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/e95fb90fc5a4aac111be78770921beb1.png",
   "冰雹": "https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/9189cb49e806d1ebfeed24f33367143c.png",
   "多雲有霾": "https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/73ae8300a30e895e3739cd50ade0dfe1.png",
+  "有靄": "https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/73ae8300a30e895e3739cd50ade0dfe1.png",
   "沙塵暴": "https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/ad9e41c68b6a2671d2bcd843be1baa86.png",
   "乾燥": "https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/ad9e41c68b6a2671d2bcd843be1baa86.png"
   };
