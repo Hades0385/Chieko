@@ -29,19 +29,6 @@ let controller = null;
 let deferredPrompt = null;
 let selectedRoute = null;
 
-/* ====== PWA 安裝提示 ====== */
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  els.btnInstall.hidden = false;
-});
-// els.btnInstall.addEventListener('click', async () => {
-//   if (!deferredPrompt) return;
-//   deferredPrompt.prompt();
-//   await deferredPrompt.userChoice;
-//   els.btnInstall.hidden = true;
-// });
-
 /* ====== 取得定位（非必要） ====== */
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(

@@ -209,3 +209,15 @@ async function loadWeatherData() {
 
 loadWeatherData(); 
 
+/* ====== PWA 安裝提示 ====== */
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  els.btnInstall.hidden = false;
+});
+els.btnInstall.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  els.btnInstall.hidden = true;
+});
