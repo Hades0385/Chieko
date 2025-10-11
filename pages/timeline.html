@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BusTaiwan</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/beercss@3.12.11/dist/cdn/beer.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/beercss@3.12.11/dist/cdn/beer.min.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"
+    ></script>
+    <link href="../css/timeline.css" rel="stylesheet" />
+    <script src="../js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="fill">
+      <p style="margin: top 10px;"></p>
+      <nav>
+        <a
+          href="./route.html"
+          class="button circle transparent"
+          aria-label="回路線"
+        >
+          <i>arrow_back</i>
+        </a>
+        <h6 class="max center-align" id="route_name">路線名稱</h6>
+        <button
+          class="circle transparent"
+          id="btnRefresh"
+          aria-label="手動更新"
+        >
+          <i>cached</i>
+        </button>
+      </nav>
+    </header>
+
+    <main class="responsive">
+      <section class="toolbar">
+      <div class="field label small round border">
+        <input id="search" type="search" inputmode="search" aria-label="搜尋站名" />
+        <label>搜尋站名</label>
+      </div>
+      <div class="row gap">
+      <label class="chip"><input type="checkbox" id="onlyActive" /> 只看有動態</label>
+      <label class="chip"><input type="checkbox" id="nearbyFirst" /> 就近排序</label>
+      </div>
+      <div id="globalAlert" class="alert" hidden></div>
+      </section>
+      
+      
+      <!-- 時間軸清單（用 timeline 風格呈現） -->
+      <section id="timeline" class="timeline" role="list" aria-live="polite" aria-busy="true">
+      <!-- 動態產生 -->
+      </section>
+      
+      
+      <template id="stationTpl">
+      <div class="station-row" role="listitem">
+      <div class="time-col">
+      <div class="time">--:--</div>
+      <div class="delay" hidden></div>
+      </div>
+      <div class="line-col">
+      <div class="dot"></div>
+      <div class="line"></div>
+      </div>
+      <div class="name-col">
+      <div class="stop-name">(未命名站)</div>
+      <div class="addr" style="font-size:12px; color:var(--muted); margin-top:6px;">—</div>
+      </div>
+      </div>
+      </template>
+      
+      </main>
+
+      <div class="meta fixed-meta">
+        <span id="lastUpdate">即時資料最後更新時間: --</span>
+      </div>
+    <nav class="bottom">
+      <a href="#home">
+        <i>home</i>
+        <div>首頁</div>
+      </a>
+      <a class="active">
+        <i>search</i>
+        <div>路線</div>
+      </a>
+      <a href="#setting">
+        <i>settings</i>
+        <div>設定</div>
+      </a>
+    </nav>
+  </body>
+</html>

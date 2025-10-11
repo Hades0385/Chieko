@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BusTaiwan</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/beercss@3.12.11/dist/cdn/beer.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/beercss@3.12.11/dist/cdn/beer.min.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"
+    ></script>
+    <script src="./js/script.js" defer></script>
+    <link href="./css/style.css" rel="stylesheet" />
+    <script src="./js/pages/route.js" defer></script>
+    <script src="./js/pages/timeline.js" defer></script>
+    <meta http-equiv="refresh" content="0;url=./pages/home.html" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/pwa-192.png" />
+    <link rel="apple-touch-icon" href="icons/pwa-192.png" />
+  </head>
+  <body id="content">
+    <nav class="bottom">
+      <a class="active">
+        <i>home</i>
+        <div>首頁</div>
+      </a>
+      <a>
+        <i>search</i>
+        <div>路線</div>
+      </a>
+      <a>
+        <i>settings</i>
+        <div>設定</div>
+      </a>
+    </nav>
+  </body>
+  <script>
+    // 註冊 Service Worker
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js');
+    });
+    }
+  </script>
+</html>

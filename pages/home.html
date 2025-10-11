@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BusTaiwan</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/beercss@3.12.11/dist/cdn/beer.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/beercss@3.12.11/dist/cdn/beer.min.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"
+    ></script>
+    <script src="../js/script.js" defer></script>
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/home.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="bottom">
+      <a class="active">
+        <i>home</i>
+        <div>首頁</div>
+      </a>
+      <a href="./route.html">
+        <i>search</i>
+        <div>路線</div>
+      </a>
+      <a href="./setting.html">
+        <i>settings</i>
+        <div>設定</div>
+      </a>
+    </nav>
+    <p style="margin-bottom: 40px"></p>
+    <main class="responsive">
+      <div class="container">
+        <div class="greeting" id="greeting">您好</div>
+        <div class="time" id="current-time">--:--</div>
+      </div>
+      <!-- 天氣資訊區塊 -->
+      <section class="weather-wrap" aria-label="天氣資訊">
+        <div class="weather-card" role="region" aria-live="polite">
+          <div class="icon-wrap">
+            <div class="icon" id="weatherIcon" aria-hidden="true">
+              <!-- 預設一張圖 -->
+              <img id="weatherImg" src="https://help.apple.com/assets/64067987823C71654C27CD1A/64067990823C71654C27CD47/zh_TW/575900edccbc7def167f7874c02aeb0b.png" alt="天氣圖示">
+            </div>
+            
+            <div class="desc" id="weatherDesc">--</div>
+          </div>
+        
+          <div class="meta">
+            <div class="location" id="location">嘉義市</div>
+        
+            <div class="temp-row">
+              <div>
+                <div class="temp" id="temp">--°</div>
+                <div class="range" id="range">--° / --°</div>
+              </div>
+            </div>
+        
+            <div class="detail-row">
+              <div class="detail-item" title="濕度">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2s-6 6.3-6 10a6 6 0 0012 0c0-3.7-6-10-6-10z"/></svg>
+                <div id="humidity">--%</div>
+              </div>
+        
+              <div class="detail-item" title="風速">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 12h13a3 3 0 100-6 4 4 0 014 4"/></svg>
+                <div id="wind">-- m/s</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    
+        
+        <div role="status" aria-live="polite" class="custom-badge-container">
+          <div class="custom-badge aqi" aria-label="空氣品質指數 AQI">
+            <div class="custom-badge-label">AQI</div>
+            <div class="custom-badge-value-wrapper">
+              <div class="custom-badge-value" id="aqiValue">--</div>
+              <div style="font-size:12px;opacity:0.9;" id="aqiLevel">--</div>
+            </div>
+          </div>
+        
+          <div class="custom-badge uvi" aria-label="紫外線指數 UVI">
+            <div class="custom-badge-label">UVI</div>
+            <div class="custom-badge-value-wrapper">
+              <div class="custom-badge-value" id="uviValue">--</div>
+              <div style="font-size:12px;opacity:0.9;" id="uviLevel">--</div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </section>
+    
+      
+      <!-- 天氣資訊區塊結束 -->
+    </main>
+
+  </body>
+</html>
