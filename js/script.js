@@ -82,7 +82,7 @@ fetch(`${GAS_URL}?type=weather&loc=...`).then(r=>r.json()).then(updateWeather).c
 
 // 你的 GAS Web App URL
 // ✅ 你的 Cloudflare Worker Proxy 網址（例如 https://your-proxy.workers.dev）
-const CF_PROXY_URL = https://steep-morning-e833.bud2021-12-27.workers.dev";
+const CF_PROXY_URL = "https://steep-morning-e833.bud2021-12-27.workers.dev";
 
 async function fetchViaProxy(targetUrl) {
   try {
