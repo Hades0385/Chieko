@@ -81,17 +81,31 @@ fetch(`${GAS_URL}?type=weather&loc=...`).then(r=>r.json()).then(updateWeather).c
 */
 
 // 你的 GAS Web App URL
-const GAS_PROXY_URL = 'https://script.google.com/macros/s/AKfycbwBLt1bDvDZauTzb1rLeJ9nNPd0C_f_Bxx66o-VR6H51jEk7lCLXPDP30vGl5ajdyqCvg/exec';
+// ✅ 你的 Cloudflare Worker Proxy 網址（例如 https://your-proxy.workers.dev）
+const CF_PROXY_URL = https://steep-morning-e833.bud2021-12-27.workers.dev";
 
-async function fetchViaGAS(targetUrl) {
+async function fetchViaProxy(targetUrl) {
   try {
-    const response = await fetch(`${GAS_PROXY_URL}?url=${encodeURIComponent(targetUrl)}`);
-    const data = await response.json(); // 假設目標 API 回傳 JSON
+    // 將目標 API URL 透過 Cloudflare Proxy 請求
+    const response = await fetch(`${CF_PROXY_URL}?url=${encodeURIComponent(targetUrl)}`, {
+      method: "GET",
+    });
+
+    // 確認回應是否正常
+    if (!response.ok) {
+      throw new Error(`Proxy request failed: ${response.status}`);
+    }
+
+    // 解析資料（自動讓前端處理格式）
+    const data = await response.json();
     return data;
+
   } catch (error) {
-    console.error('代理請求發生錯誤：', error);
+    console.error("⚠️ 代理請求發生錯誤：", error);
+    return null;
   }
 }
+
 
 function uvilevel(uvi) {
   if (uvi<=2) {
@@ -171,8 +185,8 @@ function setWeatherImage(type) {
 
 async function loadWeatherData() {
   try {
-    const weatherData = await fetchViaGAS('https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=rdec-key-123-45678-011121314&limit=1&StationName=嘉義');
-    const aqiData = await fetchViaGAS('https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&offset=40&api_key=4c89a32a-a214-461b-bf29-30ff32a61a8a');
+    const weatherData = await fetchViaProxy('https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=rdec-key-123-45678-011121314&limit=1&StationName=嘉義');
+    const aqiData = await fetchViaProxy('https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&offset=40&api_key=4c89a32a-a214-461b-bf29-30ff32a61a8a');
 
     let apiData = weatherData.records.Station[0].WeatherElement;
     let apiInfo = weatherData.records.Station[0];
