@@ -1,5 +1,4 @@
 /* ====== 基本設定 ====== */
-const GAS_URL = "https://script.google.com/macros/s/AKfycbxkAX_U63UthBP0mnrlp2tsDRPUR7ORGfXA8c-zmdj0LO8Pa9CCTqTHzvYqPNfw1yQL/exec"; // 在 index.html 注入
 const POLL_MS = 30_000;
 
 // 範例路線設定（請把 key 換成真實值）
@@ -302,12 +301,16 @@ function renderTimeline(json) {
 /* ====== 抓資料（支援多路線） ====== */
 async function fetchJSON(signal) {
   if (!selectedRoute) selectedRoute = ROUTES[0];
-  const params = new URLSearchParams({ key: selectedRoute.key });
-  const url = `${GAS_URL}?${params.toString()}`;
-  const res = await fetch(url, { signal, cache: 'no-store' });
+  const BASE_SRC = 'https://www.taiwanbus.tw/eBUSPage/Query/ws/getRData.ashx';
+  const key = selectedRoute.key;
+  const type = selectedRoute.type || '4'; 
+  const apiUrl = `${BASE_SRC}?type=${encodeURIComponent(type)}&key=${encodeURIComponent(key)}`;
+  const proxyUrl = `https://steep-morning-e833.bud2021-12-27.workers.dev?url=${encodeURIComponent(apiUrl)}`;
+  const res = await fetch(proxyUrl, { signal, cache: 'no-store' });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
+
 
 async function fetchAndRender(manual = false) {
   try {
