@@ -232,7 +232,7 @@ function renderTimeline(json) {
 
   // 更新時間顯示（UI 上方）
   const now = new Date();
-  if (els.lastUpdate) els.lastUpdate.textContent = `即時資料最後更新時間: ${pad2(now.getMonth()+1)}-${pad2(now.getDate())} ${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
+  if (els.lastUpdate) els.lastUpdate.textContent = `即時資料最後更新時間: ${pad2(now.getMonth()+1)}/${pad2(now.getDate())} ${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
 
   // ===== 建立「往下到下一站」的高亮段（支援多台車） =====
   // 先清除舊的 highlight-seg（避免累積）
