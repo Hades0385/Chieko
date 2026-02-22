@@ -71,6 +71,8 @@ function updateWeather(data){
   document.querySelector('.aqi + .uvi')?.setAttribute('aria-hidden', 'false');
   document.getElementById('uviValue').textContent = data.uvi ?? '';
   // 你可以依 data 變更 icon（此範例使用固定雨雲）
+  setAqiColor(data.aqi);
+  setUviColor(data.uvi);
 }
 
 // 初始化（載入範例資料）
@@ -183,6 +185,29 @@ function setWeatherImage(type) {
   img.alt = `404 圖示`;
 }
 
+function setAqiColor(aqi) {
+  const badge = document.querySelector('.custom-badge.aqi');
+  badge.className = 'custom-badge aqi'; // 先清空
+  
+  if (aqi <= 50) badge.classList.add('good');
+  else if (aqi <= 100) badge.classList.add('normal');
+  else if (aqi <= 150) badge.classList.add('sensitive');
+  else if (aqi <= 200) badge.classList.add('unhealthy');
+  else if (aqi <= 300) badge.classList.add('very');
+  else badge.classList.add('hazard');
+}
+
+function setUviColor(uvi) {
+  const badge = document.querySelector('.custom-badge.uvi');
+  badge.className = 'custom-badge uvi';
+
+  if (uvi <= 2) badge.classList.add('low');
+  else if (uvi <= 5) badge.classList.add('mid');
+  else if (uvi <= 7) badge.classList.add('high');
+  else if (uvi <= 10) badge.classList.add('very');
+  else badge.classList.add('danger');
+}
+
 async function loadWeatherData() {
   try {
     const weatherData = await fetchViaProxy('https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=rdec-key-123-45678-011121314&limit=1&StationName=嘉義');
@@ -198,7 +223,7 @@ async function loadWeatherData() {
     let uv = apiData.UVIndex;
     let tempH = apiData.DailyExtreme.DailyHigh.TemperatureInfo.AirTemperature;
     let tempL = apiData.DailyExtreme.DailyLow.TemperatureInfo.AirTemperature;
-    let aqi = aqiData.records[0].aqi;
+    let aqi = aqiData[0].aqi;
 
     const WEATHER_DATA = {
       location: "嘉義市",

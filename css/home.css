@@ -233,7 +233,7 @@
   }
   
   .custom-badge.uvi .custom-badge-value {
-    background: rgba(217, 123, 115, 0.2);
+    background: rgba(111, 191, 135, 0.2);
   }
   
   @media (max-width: 10px) {
@@ -290,3 +290,68 @@
     height: 80px;      /* 固定高度 */
     object-fit: contain; /* 保持比例不變，完整顯示整張圖 */
   }
+  
+  /* ===== AQI ===== */
+.aqi.good { color: #22c55e; }        /* 良好 綠 */
+.aqi.normal { color: #eab308; }      /* 普通 黃 */
+.aqi.sensitive { color: #f97316; }   /* 敏感族群 橘 */
+.aqi.unhealthy { color: #ef4444; }   /* 不良 紅 */
+.aqi.very { color: #9333ea; }        /* 非常不良 紫 */
+.aqi.hazard { color: #7f1d1d; }      /* 危害 深紅 */
+
+/* ===== UVI ===== */
+.uvi.low { color: #22c55e; }
+.uvi.mid { color: #eab308; }
+.uvi.high { color: #f97316; }
+.uvi.very { color: #ef4444; }
+.uvi.danger { color: #7c2d12; }
+
+/* AQI */
+.custom-badge.aqi.good .custom-badge-value {
+  background: #22c55e;
+}
+
+.custom-badge.aqi.normal .custom-badge-value {
+  background: #eab308;
+}
+
+.custom-badge.aqi.sensitive .custom-badge-value {
+  background: #f97316;
+}
+
+.custom-badge.aqi.unhealthy .custom-badge-value {
+  background: #ef4444;
+}
+
+.custom-badge.aqi.very .custom-badge-value {
+  background: #9333ea;
+}
+
+.custom-badge.aqi.hazard .custom-badge-value {
+  background: #7f1d1d;
+}
+
+/* UVI */
+.custom-badge.uvi.low .custom-badge-value {
+  background: #22c55e;
+}
+
+.custom-badge.uvi.mid .custom-badge-value {
+  background: #eab308;
+}
+
+.custom-badge.uvi.high .custom-badge-value {
+  background: #f97316;
+}
+
+.custom-badge.uvi.very .custom-badge-value {
+  background: #ef4444;
+}
+
+.custom-badge.uvi.danger .custom-badge-value {
+  background: #7c2d12;
+}
+
+.custom-badge-value {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
